@@ -1,7 +1,7 @@
 <script>
   import Table from './Table.svelte'
   import d3 from '../lib/d3';
-  const dataFile = 'data/mumsnet.csv';
+  const dataFile = 'data/mumsnet/forum-terms.csv';
   const loadData = d3.csv(dataFile);
 </script>
 
