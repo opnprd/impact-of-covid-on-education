@@ -1,9 +1,3 @@
-<style>
-	:global(body) {
-    font-family: sans-serif;
-  }
-</style>
-
 <script>
   import Barnardos from './components/Barnardos.svelte';
   import Mumsnet from './components/Mumsnet.svelte';

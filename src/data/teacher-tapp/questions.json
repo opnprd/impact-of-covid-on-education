@@ -1,0 +1,59 @@
+[
+  {
+    "title": "Now that schools have reopened to all students in September, what do you identify as the key challenge(s) of your day-to-day life as a teacher?",
+    "date": "2020-10-20",
+    "respondents": 1300,
+    "responses": [
+      {
+        "text": "answer one",
+        "respondents": 1200
+      },
+      {
+        "text": "answer two",
+        "respondents": 300
+      },
+      {
+        "text": "answer three",
+        "respondents": 800
+      }
+    ]
+  },
+  {
+    "title": "Which of the following most closely describes your current mental health and wellbeing?",
+    "respondents": 1200,
+    "date": "2020-10-20",
+    "responses": [
+      {
+        "text": "answer one",
+        "respondents": 1200
+      },
+      {
+        "text": "answer two",
+        "respondents": 300
+      },
+      {
+        "text": "answer three",
+        "respondents": 800
+      }
+    ]
+  },
+  {
+    "title": "In your opinion, what proportion of the pupils you teach are currently behind in their learning? Tick the response that most closely applies.",
+    "respondents": 1500,
+    "date": "2020-10-27",
+    "responses": [
+      {
+        "text": "answer one",
+        "respondents": 1200
+      },
+      {
+        "text": "answer two",
+        "respondents": 300
+      },
+      {
+        "text": "answer three",
+        "respondents": 800
+      }
+    ]    
+  }
+]

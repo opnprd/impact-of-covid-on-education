@@ -1,7 +1,7 @@
 // Slipstreamed d3 library
 
-import { csv } from 'd3-fetch';
+import { csv, json } from 'd3-fetch';
 
 export default {
-  csv,
+  csv, json,
 };
