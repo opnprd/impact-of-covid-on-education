@@ -54,6 +54,64 @@
         "text": "answer three",
         "respondents": 800
       }
-    ]    
+    ]
+  },
+  {
+    "title": "What proportion of the students you teach are having a *successful* learning experience during lockdown, i.e. learning *as much or more* than they would if they were in school? Tick the response that most closely applies.",
+    "respondents": 7692,
+    "date": "2020-05-01",
+    "responses": [
+      {
+        "text": "No students are having a very successful learning experience",
+        "percentage": "7%",
+        "respondents": "575"
+      },
+      {
+        "text": "1-in-30 (e.g. 1 in a class)",
+        "percentage": "6%",
+        "respondents": "455"
+      },
+      {
+        "text": "1-in-10 (e.g. 3 in a class)",
+        "percentage": "16%",
+        "respondents": "1207"
+      },
+      {
+        "text": "1-in-5 (e.g. 6 in a class)",
+        "percentage": "16%",
+        "respondents": "1215"
+      },
+      { "text": "1-in-3", "percentage": "9%", "respondents": "673" },
+      {
+        "text": "1-in-2 (about half the class)",
+        "percentage": "13%",
+        "respondents": "967"
+      },
+      {
+        "text": "3-in-4 (three quarters of the class)",
+        "percentage": "9%",
+        "respondents": "701"
+      },
+      {
+        "text": "Almost all the students I teach are having a very successful learning experience",
+        "percentage": "6%",
+        "respondents": "494"
+      },
+      {
+        "text": "All the students I teach are having a very successful learning experience",
+        "percentage": "1%",
+        "respondents": "44"
+      },
+      {
+        "text": "I don't know who is having a successful learning experience",
+        "percentage": "12%",
+        "respondents": "934"
+      },
+      {
+        "text": "Not relevant / cannot answer",
+        "percentage": "6%",
+        "respondents": "441"
+      }
+    ]
   }
 ]
