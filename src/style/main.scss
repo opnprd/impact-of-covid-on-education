@@ -1,11 +1,17 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap);
 
-$popover-width: 80%;
+$popover-size: 80%;
 $mumsnet-brand-colour: hsl(204, 100%, 32%);
 $teacher-tapp-brand-colour: hsl(164, 76%, 47%);
+$barnardos-brand-colour: hsl(81, 100%, 32%);
 
 body {
   font-family: 'Roboto Slab', serif;
+}
+
+article {
+  margin: 0 auto;
+  max-width: 50em;
 }
 
 .container {
@@ -18,10 +24,12 @@ body {
     background: white;
     border: 1px solid grey;
     border-radius: 0.5em;
-    top: 10%;
-    width: $popover-width;
+    top: 50%;
+    width: $popover-size;
+    height: $popover-size;
     left: 50%;
-    margin-left: $popover-width / -2;
+    margin-left: $popover-size / -2;
+    margin-top: $popover-size / -2;
   }
 }
 
