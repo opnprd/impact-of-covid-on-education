@@ -92,15 +92,15 @@
     "responses": [
       {
         "t": "answer one",
-        "s": [{"l": "All", "pct": 50, "r": 1200}]
+        "s": [{ "l": "All", "pct": 1, "r": 1200 }]
       },
       {
         "t": "answer two",
-        "s": [{"l": "All", "pct": 50, "r": 300}]
+        "s": [{ "l": "All", "pct": 50, "r": 300 }]
       },
       {
         "t": "answer three",
-        "s": [{"l": "All", "pct": 50, "r": 800}]
+        "s": [{ "l": "All", "pct": 100, "r": 800 }]
       }
     ]
   },
