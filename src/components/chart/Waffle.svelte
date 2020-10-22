@@ -9,7 +9,7 @@
   {/each}
 </svg>
 
-<style type='text/scss'>
+<style type="text/scss">
   .greyed {
     fill: #eee;
   }

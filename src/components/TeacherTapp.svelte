@@ -1,11 +1,11 @@
 <script>
   import d3 from '../lib/d3';
   import { formatDate } from '../lib/utils';
-  import Bargraph from './Bargraph.svelte';
   import Waffle from './chart/Waffle.svelte';
 
   const dataFile = 'data/teacher-tapp/questions.json';
   const loadData = d3.json(dataFile);
+  const label = 'All';
 </script>
 
 <section class="teachertapp">
@@ -15,17 +15,17 @@
     <p>Loading data file</p>
   {:then questions}
     {#each questions as question}
-      <h3>{ question.title }</h3>
+      <h3>{ question.t }</h3>
       <div class="grid">
         {#each question.responses as response, i }
           <section class="response">
-            <Waffle number={ response.respondents } total={ question.respondents } />
-            <p>{ response.text }</p>
+            <Waffle number={ response.s.find(x => x.l === label).pct } />
+            <p>{ response.t }</p>
           </section>
         {/each}
       </div>
-      <p>Total respondents { question.respondents }</p>
-      <p>Question asked on { formatDate(question.date) }</p>
+      <p>Total respondents { question.r }</p>
+      <p>Question asked on { formatDate(question.d) }</p>
     {/each}
   {/await}
 </section>

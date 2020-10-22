@@ -1,116 +1,157 @@
 [
   {
-    "title": "Now that schools have reopened to all students in September, what do you identify as the key challenge(s) of your day-to-day life as a teacher?",
-    "date": "2020-10-20",
-    "respondents": 1300,
+    "t": "Now that schools are reopened to all students, what do you identify as the key challenge(s) of your day-to-day life as a teacher?",
+    "d": "2020-10-20",
+    "r": 6592,
     "responses": [
       {
-        "text": "answer one",
-        "respondents": 1200
+        "t": "Identifying gaps in children’s learning and working out how to assist those in need of extra support",
+        "s": [{ "l": "All", "pct": 61, "r": 4015 }]
       },
       {
-        "text": "answer two",
-        "respondents": 300
+        "t": "Having to re-teach knowledge/skills from before lockdown",
+        "s": [{ "l": "All", "pct": 48, "r": 3196 }]
       },
       {
-        "text": "answer three",
-        "respondents": 800
+        "t": "Designing remote learning resources for isolating pupils/future lockdowns",
+        "s": [{ "l": "All", "pct": 56, "r": 3718 }]
+      },
+      {
+        "t": "Answering Covid-19 related questions from pupils",
+        "s": [{ "l": "All", "pct": 10, "r": 638 }]
+      },
+      {
+        "t": "Implementing hygiene and social distancing routines",
+        "s": [{ "l": "All", "pct": 62, "r": 4087 }]
+      },
+      {
+        "t": "Increased evidence gathering of pupils’ progress to back up my teacher judgements",
+        "s": [{ "l": "All", "pct": 20, "r": 1293 }]
+      },
+      {
+        "t": "Dealing with high levels of bullying and/or truancy",
+        "s": [{ "l": "All", "pct": 5, "r": 362 }]
+      },
+      {
+        "t": "Supporting pupils whose emotional health and mental well-being is suffering",
+        "s": [{ "l": "All", "pct": 42, "r": 2767 }]
+      },
+      {
+        "t": "Supporting children who are socially and/or economically vulnerable",
+        "s": [{ "l": "All", "pct": 32, "r": 2089 }]
+      },
+      {
+        "t": "Not relevant / cannot answer",
+        "s": [{ "l": "All", "pct": 3, "r": 222 }]
       }
     ]
   },
   {
-    "title": "Which of the following most closely describes your current mental health and wellbeing?",
-    "respondents": 1200,
-    "date": "2020-10-20",
+    "t": "Which of the following most closely describes your current mental health and wellbeing?",
+    "r": 6594,
+    "d": "2020-10-20",
     "responses": [
       {
-        "text": "answer one",
-        "respondents": 1200
+        "t": "I’m completely happy and confident in respect to my work",
+        "s": [{ "l": "All", "pct": 7, "r": 447 }]
       },
       {
-        "text": "answer two",
-        "respondents": 300
+        "t": "I’m mostly happy and confident in respect to my work",
+        "s": [{ "l": "All", "pct": 32, "r": 2099 }]
       },
       {
-        "text": "answer three",
-        "respondents": 800
+        "t": "I’m slightly anxious and stressed because of my work",
+        "s": [{ "l": "All", "pct": 31, "r": 2070 }]
+      },
+      {
+        "t": "I’m anxious and stressed because of my work",
+        "s": [{ "l": "All", "pct": 16, "r": 1029 }]
+      },
+      {
+        "t": "I’m very anxious and stressed because of my work",
+        "s": [{ "l": "All", "pct": 8, "r": 523 }]
+      },
+      {
+        "t": "I’m completely overwhelmed by my work challenges",
+        "s": [{ "l": "All", "pct": 3, "r": 220 }]
+      },
+      {
+        "t": "I’m seriously concerned about my poor mental health caused by my work",
+        "s": [{ "l": "All", "pct": 2, "r": 135 }]
+      },
+      {
+        "t": "Not relevant / cannot answer",
+        "s": [{ "l": "All", "pct": 1, "r": 74 }]
       }
     ]
   },
   {
-    "title": "In your opinion, what proportion of the pupils you teach are currently behind in their learning? Tick the response that most closely applies.",
-    "respondents": 1500,
-    "date": "2020-10-27",
+    "t": "In your opinion, what proportion of the pupils you teach are currently behind in their learning? Tick the response that most closely applies.",
+    "r": 1500,
+    "d": "2020-10-27",
     "responses": [
       {
-        "text": "answer one",
-        "respondents": 1200
+        "t": "answer one",
+        "s": [{"l": "All", "pct": 50, "r": 1200}]
       },
       {
-        "text": "answer two",
-        "respondents": 300
+        "t": "answer two",
+        "s": [{"l": "All", "pct": 50, "r": 300}]
       },
       {
-        "text": "answer three",
-        "respondents": 800
+        "t": "answer three",
+        "s": [{"l": "All", "pct": 50, "r": 800}]
       }
     ]
   },
   {
-    "title": "What proportion of the students you teach are having a *successful* learning experience during lockdown, i.e. learning *as much or more* than they would if they were in school?",
-    "respondents": 7692,
-    "date": "2020-05-01",
+    "t": "What proportion of the students you teach are having a *successful* learning experience during lockdown, i.e. learning *as much or more* than they would if they were in school?",
+    "r": 7692,
+    "d": "2020-05-01",
     "responses": [
       {
-        "text": "No students are having a very successful learning experience",
-        "percentage": "7%",
-        "respondents": "575"
+        "t": "No students are having a very successful learning experience",
+        "s": [{ "l": "All", "pct": 7, "r": 575 }]
       },
       {
-        "text": "1-in-30 (e.g. 1 in a class)",
-        "percentage": "6%",
-        "respondents": "455"
+        "t": "1-in-30 (e.g. 1 in a class)",
+        "s": [{ "l": "All", "pct": 6, "r": 455 }]
       },
       {
-        "text": "1-in-10 (e.g. 3 in a class)",
-        "percentage": "16%",
-        "respondents": "1207"
+        "t": "1-in-10 (e.g. 3 in a class)",
+        "s": [{ "l": "All", "pct": 16, "r": 1207 }]
       },
       {
-        "text": "1-in-5 (e.g. 6 in a class)",
-        "percentage": "16%",
-        "respondents": "1215"
-      },
-      { "text": "1-in-3", "percentage": "9%", "respondents": "673" },
-      {
-        "text": "1-in-2 (about half the class)",
-        "percentage": "13%",
-        "respondents": "967"
+        "t": "1-in-5 (e.g. 6 in a class)",
+        "s": [{ "l": "All", "pct": 16, "r": 1215 }]
       },
       {
-        "text": "3-in-4 (three quarters of the class)",
-        "percentage": "9%",
-        "respondents": "701"
+        "t": "1-in-3",
+        "s": [{ "l": "All", "pct": 9, "r": 673 }]
       },
       {
-        "text": "Almost all the students I teach are having a very successful learning experience",
-        "percentage": "6%",
-        "respondents": "494"
+        "t": "1-in-2 (about half the class)",
+        "s": [{ "l": "All", "pct": 13, "r": 967 }]
       },
       {
-        "text": "All the students I teach are having a very successful learning experience",
-        "percentage": "1%",
-        "respondents": "44"
+        "t": "3-in-4 (three quarters of the class)",
+        "s": [{ "l": "All", "pct": 9, "r": 701 }]
       },
       {
-        "text": "I don't know who is having a successful learning experience",
-        "percentage": "12%",
-        "respondents": "934"
+        "t": "Almost all the students I teach are having a very successful learning experience",
+        "s": [{ "l": "All", "pct": 6, "r": 494 }]
       },
       {
-        "text": "Not relevant / cannot answer",
-        "percentage": "6%",
-        "respondents": "441"
+        "t": "All the students I teach are having a very successful learning experience",
+        "s": [{ "l": "All", "pct": 1, "r": 44 }]
+      },
+      {
+        "t": "I don't know who is having a successful learning experience",
+        "s": [{ "l": "All", "pct": 12, "r": 934 }]
+      },
+      {
+        "t": "Not relevant / cannot answer",
+        "s": [{ "l": "All", "pct": 6, "r": 441 }]
       }
     ]
   }
