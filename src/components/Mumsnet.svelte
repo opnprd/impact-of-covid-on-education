@@ -1,8 +1,9 @@
 <script>
   import Table from './Table.svelte'
+  import { getCsv } from '../lib/fetch';
   import d3 from '../lib/d3';
   const dataFile = 'data/mumsnet/forum-terms.csv';
-  const loadData = d3.csv(dataFile);
+  const loadData = getCsv(dataFile);
 </script>
 
 <style>

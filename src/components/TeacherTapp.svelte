@@ -1,10 +1,10 @@
 <script>
-  import d3 from '../lib/d3';
+  import { getJson} from '../lib/fetch';
   import { formatDate } from '../lib/utils';
   import Waffle from './chart/Waffle.svelte';
 
   const dataFile = 'data/teacher-tapp/questions.json';
-  const loadData = d3.json(dataFile);
+  const loadData = getJson(dataFile);
   const label = 'All';
 </script>
 
