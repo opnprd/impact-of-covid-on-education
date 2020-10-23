@@ -17,6 +17,9 @@
       padding: 0.2em 0.5em;
       text-align: center;
     }
+    th:first-child {
+      width: 15em;
+    }
   }
 </style>
 
