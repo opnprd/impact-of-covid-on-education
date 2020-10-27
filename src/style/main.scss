@@ -45,6 +45,9 @@ article {
   svg {
     rect {
       fill: $teacher-tapp-brand-colour;
+      &.baseline {
+        stroke: complement($teacher-tapp-brand-colour);
+      }
     }
   }
 }
