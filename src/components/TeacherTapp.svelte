@@ -1,11 +1,12 @@
 <script>
-  import { getJson} from '../lib/fetch';
+  import { query_selector_all } from 'svelte/internal';
+import { getJson} from '../lib/fetch';
   import { formatDate } from '../lib/utils';
   import Waffle from './chart/Waffle.svelte';
 
   const dataFile = 'data/teacher-tapp/questions.json';
   const loadData = getJson(dataFile);
-  const label = 'All';
+  let dimension = 0;
 </script>
 
 <section class="teachertapp">
@@ -14,12 +15,19 @@
   {#await loadData}
     <p>Loading data file</p>
   {:then questions}
-    {#each questions as question}
-      <h3>{ question.t }</h3>
+    <label for="tt-dimension">Choose a dimension:</label>
+    <select id="tt-dimension" bind:value={dimension}>
+      {#each questions.k as dim, i}
+        <option value={ i }>{ dim }</option>
+      {/each}
+    </select>
+
+    {#each questions.q as question}
+      <h3>{ question.q }</h3>
       <div class="grid">
-        {#each question.responses as response, i }
+        {#each question.a as response }
           <section class="response">
-            <Waffle number={ response.s.find(x => x.l === label).pct } />
+            <Waffle number={ response.d[dimension] } />
             <p>{ response.t }</p>
           </section>
         {/each}
