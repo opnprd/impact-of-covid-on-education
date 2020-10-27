@@ -1,6 +1,5 @@
 <script>
-  import { query_selector_all } from 'svelte/internal';
-import { getJson} from '../lib/fetch';
+  import { getJson} from '../lib/fetch';
   import { formatDate } from '../lib/utils';
   import Waffle from './chart/Waffle.svelte';
 
@@ -44,11 +43,11 @@ import { getJson} from '../lib/fetch';
     flex-wrap: wrap;
   }
   .response {
-    width: 10em;
+    width: 5em;
     padding-bottom: 1em;
     padding-right: 1em;
     p {
-      font-size: smaller;
+      font-size: 0.7em;
       margin: 0; 
     }
   }
