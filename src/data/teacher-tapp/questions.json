@@ -105,6 +105,49 @@
       ]
     },
     {
+      "q": "In your opinion, what proportion of the pupils you teach are currently behind in their learning?",
+      "d": "2020-10-27",
+      "r": 6460,
+      "a": [
+        {
+          "t": "1-in-30 (e.g. 1 in a class)",
+          "d": [5, 5, 6, 4, 2, 8, 29, 2, 6, 5, 4, 4, 7, 5, 4, 1]
+        },
+        {
+          "t": "1-in-10 (e.g. 3 in a class)",
+          "d": [17, 16, 19, 13, 10, 25, 34, 15, 16, 15, 16, 12, 20, 23, 14, 7]
+        },
+        {
+          "t": "1-in-5 (e.g. 6 in a class)",
+          "d": [25, 26, 23, 16, 28, 24, 16, 26, 26, 25, 24, 24, 26, 24, 25, 23]
+        },
+        {
+          "t": "1-in-3 (e.g. 10 in a class)",
+          "d": [17, 17, 15, 16, 22, 13, 5, 18, 15, 18, 18, 20, 15, 16, 16, 21]
+        },
+        {
+          "t": "1-in-2 (about half the class)",
+          "d": [12, 12, 10, 11, 15, 8, 3, 13, 13, 10, 12, 16, 10, 9, 12, 16]
+        },
+        {
+          "t": "3-in-4 (three quarters of the class)",
+          "d": [7, 7, 6, 7, 9, 5, 1, 7, 6, 7, 7, 7, 5, 5, 10, 13]
+        },
+        {
+          "t": "Almost all the students I teach are behind",
+          "d": [8, 7, 8, 6, 6, 6, 2, 8, 7, 7, 9, 7, 7, 8, 9, 11]
+        },
+        {
+          "t": "I don't know who is behind, I am trying to work it out",
+          "d": [4, 3, 5, 2, 2, 7, 5, 4, 5, 4, 4, 3, 3, 4, 5, 3]
+        },
+        {
+          "t": "Not relevant / cannot answer",
+          "d": [6, 6, 6, 24, 7, 5, 7, 6, 6, 9, 5, 6, 5, 7, 6, 6]
+        }
+      ]
+    },
+    {
       "q": "What proportion of the students you teach are having a *successful* learning experience during lockdown, i.e. learning *as much or more* than they would if they were in school? Tick the response that most closely applies.",
       "d": "2020-05-01",
       "r": 7693,
