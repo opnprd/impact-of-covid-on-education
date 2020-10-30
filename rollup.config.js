@@ -57,14 +57,18 @@ export default {
     }),
     html({
       title: 'Impact of COVID-19 on Education',
-      meta: [{ charset: 'utf-8' }, { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
+      meta: [
+        { charset: 'utf-8' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      ],
     }),
     copy({
       targets: [
         { src: 'src/data/', dest: 'docs/' },
+        { src: 'src/CNAME', dest: 'docs/' },
       ],
     }),
-		!production && serve(),
+    !production && serve(),
     !production && livereload('docs'),
     production && terser(),
   ],

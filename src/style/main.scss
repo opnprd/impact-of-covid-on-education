@@ -5,13 +5,19 @@ $mumsnet-brand-colour: hsl(204, 100%, 32%);
 $teacher-tapp-brand-colour: hsl(164, 76%, 47%);
 $barnardos-brand-colour: hsl(81, 100%, 32%);
 
-body {
-  font-family: 'Roboto Slab', serif;
+html {
+  font-size: 14px;
 }
 
-article {
-  margin: 0 auto;
+body, input, select {
+  font-family: 'Roboto Slab', serif;
+  font-size: 1em;
+}
+
+[role=main] {
+  margin-left: 22rem;
   max-width: 50em;
+  padding-top: 100px;
 }
 
 .container {

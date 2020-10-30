@@ -1,3 +1,6 @@
 <section>
-  <h2>Barnardos</h2>
+  <h2>The Child's Perspective</h2>
+  <p>
+    TKTKTK
+  </p>
 </section>

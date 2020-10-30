@@ -1,13 +1,17 @@
 <script>
   import Barnardos from './components/Barnardos.svelte';
+  import ControlPanel from './components/ControlPanel.svelte';
+  import Header from './components/Header.svelte';
   import Mumsnet from './components/Mumsnet.svelte';
   import TeacherTapp from './components/TeacherTapp.svelte';
 </script>
 
-<article>
-  <h1>The Impact of COVID-19 on education</h1>
-
-  <Barnardos/>
-  <Mumsnet/>
-  <TeacherTapp/>  
-</article>
+<Header/>
+<ControlPanel/>
+<main role='main'>
+  <article>
+    <Barnardos/>
+    <Mumsnet/>
+    <TeacherTapp/>  
+  </article>
+</main>

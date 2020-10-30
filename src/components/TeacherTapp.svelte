@@ -2,11 +2,13 @@
   import { getJson } from '../lib/fetch';
   import { formatDate } from '../lib/utils';
   import Waffle from './chart/Waffle.svelte';
-
+  import { dimension, comparator, questions } from '../store/teacher-tapp.js';
+  
   const dataFile = 'data/teacher-tapp/questions.json';
-  const loadData = getJson(dataFile);
-  let dimension = 0;
-  let comparator = undefined;
+  const loadData = async () => {
+    questions.set(await getJson(dataFile));
+  }
+  const loader = loadData();
 </script>
 
 <style type="text/scss">
@@ -26,41 +28,18 @@
 </style>
 
 <section class="teachertapp">
-  <h2>The Teacher Perspective</h2>
-  <section>
-    <p>We surveyed a group of teachers using the Teacher Tapp application.</p>
-  </section>
-  {#await loadData}
+  <h2>The Teacher's Perspective</h2>
+  {#await loader}
     <p>Loading data file</p>
-  {:then questions}
-    <div>
-      <label for="tt-dimension">Choose a primary dimension</label>
-      <select id="tt-dimension" bind:value={dimension}>
-        {#each questions.k as dim, i}
-          <option value={i}>{dim}</option>
-        {/each}
-      </select>
-    </div>
-    {#if dimension != 0}
-      <div>
-        <label for="tt-dimension">Choose a dimension to compare against</label>
-        <select id="tt-dimension" bind:value={comparator}>
-          <option>None</option>
-          {#each questions.k as dim, i}
-            <option value={i}>{dim}</option>
-          {/each}
-        </select>
-      </div>
-    {/if}
-
-    {#each questions.q as question}
+  {:then}
+    {#each $questions.q as question}
       <h3>{question.q}</h3>
       <div class="grid">
         {#each question.a as response}
           <section class="response">
             <Waffle
-              number={response.d[dimension]}
-              reference={dimension > 0 ? response.d[comparator] : undefined} />
+              number={response.d[$dimension]}
+              reference={$dimension > 0 ? response.d[$comparator] : undefined} />
             <p>{response.t}</p>
           </section>
         {/each}
