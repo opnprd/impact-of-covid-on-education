@@ -1,12 +1,29 @@
 <script>
   import { dimension, comparator, questions } from '../store/teacher-tapp.js';
   import { datasets as mDatasets, dataset as mDataset } from '../store/mumsnet';
-  import Twistie from './Twistie.svelte';
 
   let barnardosHidden = true;
   let mumsnetHidden = true;
   let teacherTappHidden = true;
+
+  const yBreak = [10, 920];
+
+  const scrollHandler = (e) => {
+    const { scrollY: y } = window;
+    if (y < yBreak[0]) {
+      ([barnardosHidden, mumsnetHidden, teacherTappHidden] = [false, true, true]);
+      return;
+    }
+    if (y < yBreak[1]) {
+      ([barnardosHidden, mumsnetHidden, teacherTappHidden] = [true, false, true]);
+      return;
+    }
+    ([barnardosHidden, mumsnetHidden, teacherTappHidden] = [true, true, false]);
+
+  }
 </script>
+
+<svelte:window on:scroll={scrollHandler}/>
 
 <style type="text/scss">
   aside {
@@ -35,7 +52,6 @@
 <aside>
   <section class:hidden={barnardosHidden}>
     <h2 on:click={ () => barnardosHidden = !barnardosHidden }>
-      <Twistie hidden={barnardosHidden} />
       The Child's Perspective</h2>
     <p>
       TKTKTK
@@ -44,7 +60,6 @@
 
   <section class:hidden={mumsnetHidden}>
     <h2 on:click={ () => mumsnetHidden = !mumsnetHidden }>
-      <Twistie hidden={mumsnetHidden} />
       The Parent's Perspective</h2>
     <p>
       The text extracted from the Mumsnet forums has been analysed to assess the
@@ -66,8 +81,8 @@
   {#if $questions}
     <section class:hidden={ teacherTappHidden }>
       <h2 on:click={ () => teacherTappHidden = !teacherTappHidden }>
-        <Twistie hidden={teacherTappHidden} />
-        The Teacher's Perspective</h2>
+        The Teacher's Perspective
+      </h2>
       <p>
         We commissioned a series of surveys with Teacher Tapp.
         TKTKTK
