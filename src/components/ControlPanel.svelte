@@ -17,9 +17,7 @@
     padding: 1rem;
     padding-top: 9rem;
     box-sizing: content-box;
-    background: lightgrey;
     height: 100%;
-    // box-shadow: 0 0 10px 1px hsla(0, 0%, 0%, 99%);
     width: 18rem;
   }
   select {

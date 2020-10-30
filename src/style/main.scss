@@ -1,18 +1,44 @@
-@import url(https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap);
+@import 'reset',
+        'odileeds';
 
 $popover-size: 80%;
+
 $mumsnet-brand-colour: hsl(204, 100%, 32%);
 $teacher-tapp-brand-colour: hsl(164, 76%, 47%);
 $barnardos-brand-colour: hsl(81, 100%, 32%);
 
-html {
-  font-size: 14px;
+%standard-font {
+  font-family: $odileeds-font-stack;
+  font-size: $odileeds-font-size;
+  line-height: 1.2;
 }
 
-body, input, select {
-  font-family: 'Roboto Slab', serif;
-  font-size: 1em;
+h1 {
+  font-size: 1.5em;
 }
+
+h2 {
+  font-size: 1.2em;
+}
+
+input, select {
+  @extend %standard-font;
+}
+
+body {
+  @extend %standard-font;
+  > header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $odileeds-colour-c10;
+    box-shadow: 0 0 5px 1px hsla(0, 0%, 65%, 95%);
+    padding: 1rem;
+    z-index: 100;
+  }
+}
+
 
 [role=main] {
   margin-left: 22rem;
