@@ -8,8 +8,8 @@
 
   const yBreak = [10, 920];
 
-  const scrollHandler = (e) => {
-    const { scrollY: y } = window;
+  const calculateState = (y) => {
+    console.log(y)
     if (y < yBreak[0]) {
       ([barnardosHidden, mumsnetHidden, teacherTappHidden] = [false, true, true]);
       return;
@@ -19,8 +19,10 @@
       return;
     }
     ([barnardosHidden, mumsnetHidden, teacherTappHidden] = [true, true, false]);
+  };
+  calculateState(window.scrollY);
 
-  }
+  const scrollHandler = () => calculateState(window.scrollY);
 </script>
 
 <svelte:window on:scroll={scrollHandler}/>
