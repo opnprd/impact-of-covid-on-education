@@ -7,16 +7,19 @@
 <svg viewbox="0 0 100 100">
   {#each Array(100) as _, cell}
     <rect
-      class:greyed={ cell + 1 > 100*number/total }
+      class:filled={ cell + 1 <= 100*number/total }
       class:baseline={ cell + 1 <= 100*reference/total }
-      width="8" height="8"
-      x={10 * (cell % 10)}
-      y={10 * Math.floor((99-cell) / 10)} />
+      width="5" height="5"
+      x={(10 * (cell % 10)) + 1}
+      y={(10 * Math.floor((99-cell) / 10)) + 1} />
   {/each}
 </svg>
 
 <style type="text/scss">
-  .greyed {
-    fill: #eee;
+  $grey: #eee;
+  rect {
+    fill: $grey;
+    stroke: $grey;
+    stroke-width: 3;
   }
 </style>

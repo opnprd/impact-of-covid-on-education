@@ -27,20 +27,6 @@
 <svelte:window on:scroll={scrollHandler}/>
 
 <style type="text/scss">
-  aside {
-    position: fixed;
-    font-size: 0.9em;
-    top: 0;
-    left: -2px;
-    padding: 1rem;
-    padding-top: 9rem;
-    box-sizing: content-box;
-    height: 100%;
-    width: 18rem;
-  }
-  select {
-    width: 100%;
-  }
   section {
     &.hidden {
       :not(:first-child) {

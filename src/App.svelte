@@ -9,9 +9,7 @@
 <Header/>
 <ControlPanel/>
 <main role='main'>
-  <article>
-    <Barnardos/>
-    <Mumsnet/>
-    <TeacherTapp/>  
-  </article>
+  <Barnardos/>
+  <Mumsnet/>
+  <TeacherTapp/>  
 </main>

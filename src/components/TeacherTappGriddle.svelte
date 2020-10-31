@@ -22,15 +22,17 @@
 <section>
   <h3>{question.q}</h3>
 
-  <div>
+  <div class='selector'>
     <label for='primary-segment'>Segment</label>
+    <svg width='10' viewBox='0 0 10 10'><rect class='filled' width='10' height='10'/></svg>
     <select id='primary-segment' bind:value={segment}>
       {#each keys as k}<option>{ k }</option>{/each}
     </select>
   </div>
   {#if segment != 'All'}
-    <div>
+    <div class='selector'>
       <label for='comarison-segment'>Comparison</label>
+      <svg width='10' viewBox='0 0 10 10'><rect class='baseline' width='10' height='10'/></svg>
       <select id='comparison-segment' bind:value={baseline}>
         <option>None</option>
         {#each keys as k}<option>{ k }</option>{/each}
@@ -38,9 +40,9 @@
     </div>
   {/if}
 
-  <div class="grid">
+  <div class='grid'>
     {#each responses as { title, number, reference }}
-      <section class="response">
+      <section class='response'>
         <Waffle { number } { reference } />
         <p>{ title }</p>
         <p class='summary'>{ number }% of { segment } respondents</p>

@@ -13,12 +13,30 @@ $barnardos-brand-colour: hsl(81, 100%, 32%);
   line-height: 1.2;
 }
 
+%spaced-text {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+}
+
+%content-block {
+  margin-top: 100px;
+}
+
 h1 {
+  @extend %spaced-text;
   font-size: 1.5em;
 }
 
 h2 {
+  @extend %spaced-text;
   font-size: 1.2em;
+  font-weight: bold;
+}
+
+h3 {
+  @extend %spaced-text;
+  font-size: 1.1em;
+  font-weight: bold;
 }
 
 input, select {
@@ -37,13 +55,23 @@ body {
     padding: 1rem;
     z-index: 100;
   }
+  > aside {
+    @extend %content-block;
+    position: fixed;
+    font-size: 0.9em;
+    top: 0;
+    padding: 0 1em;
+    left: -2px;
+    box-sizing: content-box;
+    height: 100%;
+    width: 18rem;
+  }
 }
 
-
 [role=main] {
+  @extend %content-block;
   margin-left: 22rem;
   max-width: 50em;
-  padding-top: 100px;
 }
 
 .container {
@@ -77,6 +105,17 @@ body {
 }
 
 .teachertapp {
+  .selector {
+    display: flex;
+    margin: 0.5em 0;
+    svg {
+      padding: 0 0.5em;
+    }
+  }
+  label {
+    display: block;
+    width: 10em;
+  }
   .grid {
     display: flex;
     flex-wrap: wrap;
@@ -91,11 +130,12 @@ body {
     }
   }
   svg {
-    rect {
+    .filled {
       fill: $teacher-tapp-brand-colour;
-      &.baseline {
-        stroke: complement($teacher-tapp-brand-colour);
-      }
+      stroke: $teacher-tapp-brand-colour;
+    }
+    .baseline {
+      fill: adjust-hue($teacher-tapp-brand-colour, 120deg);
     }
   }
 }
