@@ -77,6 +77,19 @@ body {
 }
 
 .teachertapp {
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .response {
+    width: 10em;
+    padding-bottom: 1em;
+    padding-right: 1em;
+    p {
+      font-size: 0.7em;
+      margin: 0;
+    }
+  }
   svg {
     rect {
       fill: $teacher-tapp-brand-colour;

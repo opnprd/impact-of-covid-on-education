@@ -1,5 +1,5 @@
 <script>
-  import { dimension, comparator, questions } from '../store/teacher-tapp.js';
+  import { questions } from '../store/teacher-tapp.js';
   import { datasets as mDatasets, dataset as mDataset } from '../store/mumsnet';
 
   let barnardosHidden = true;
@@ -9,7 +9,6 @@
   const yBreak = [10, 920];
 
   const calculateState = (y) => {
-    console.log(y)
     if (y < yBreak[0]) {
       ([barnardosHidden, mumsnetHidden, teacherTappHidden] = [false, true, true]);
       return;
@@ -97,29 +96,11 @@
         The surveys returned by the teachers have been segmented during
         analysis. Select a segment to drill down into the results.
       </p>
-      <div>
-        <label for="tt-dimension">Primary</label>
-        <select id="tt-dimension" bind:value={$dimension}>
-          {#each $questions.k as dim, i}
-            <option value={i}>{dim}</option>
-          {/each}
-        </select>
-      </div>
-      {#if $dimension != 0}
-        <p>
-          You can comare this result against another segment by selecting below.
-          That will appear as a solid border on the chart.
-        </p>
-        <div>
-          <label for="tt-dimension">Comparison</label>
-          <select id="tt-dimension" bind:value={$comparator}>
-            <option>None</option>
-            {#each $questions.k as dim, i}
-              <option value={i}>{dim}</option>
-            {/each}
-          </select>
-        </div>
-      {/if}
+      <p>
+        You can comare this result against another segment with the select box
+        that appears. The baseline figure will appear as a solid border on the
+        chart.
+      </p>
     </section>
   {/if}
 </aside>
