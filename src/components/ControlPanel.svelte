@@ -1,33 +1,41 @@
 <script>
-  import { questions } from '../store/teacher-tapp.js';
+  import { afterUpdate } from "svelte";
   import { datasets as mDatasets, dataset as mDataset } from '../store/mumsnet';
 
-  let barnardosHidden = true;
-  let mumsnetHidden = true;
-  let teacherTappHidden = true;
+  const topPadding = 100;
+  let hidden = [];
 
-  const yBreak = [10, 920];
+  const findHeaders = () => {
+    const targets = document.querySelectorAll('main section h2');
+    return Array.from(targets).map(x => x.offsetTop);
+  }
 
-  const calculateState = (y) => {
-    if (y < yBreak[0]) {
-      ([barnardosHidden, mumsnetHidden, teacherTappHidden] = [false, true, true]);
-      return;
-    }
-    if (y < yBreak[1]) {
-      ([barnardosHidden, mumsnetHidden, teacherTappHidden] = [true, false, true]);
-      return;
-    }
-    ([barnardosHidden, mumsnetHidden, teacherTappHidden] = [true, true, false]);
+  const calculateState = () => {
+    const offsets = findHeaders();
+    const y = window.scrollY + 2 * topPadding;
+
+    hidden = offsets.map((c, i, a) => !((y > c) && !(y > a[i+1])));
   };
-  calculateState(window.scrollY);
 
-  const scrollHandler = () => calculateState(window.scrollY);
+  const scrollHandler = () => calculateState();
+
+  const scroller = (pos) => () => {
+    const offsets = findHeaders();
+    window.scrollTo(0, offsets[pos] - topPadding);
+  }
+
+  afterUpdate(() => {
+    calculateState();
+  });
 </script>
 
 <svelte:window on:scroll={scrollHandler}/>
 
 <style type="text/scss">
   section {
+    &:first-of-type {
+      margin-top: -1.2em;
+    }
     &.hidden {
       :not(:first-child) {
         display: none;
@@ -37,16 +45,16 @@
 </style>
 
 <aside>
-  <section class:hidden={barnardosHidden}>
-    <h2 on:click={ () => barnardosHidden = !barnardosHidden }>
+  <section class:hidden={hidden[0]}>
+    <h2 on:click={ scroller(0) }>
       The Child's Perspective</h2>
     <p>
       TKTKTK
     </p>
   </section>
 
-  <section class:hidden={mumsnetHidden}>
-    <h2 on:click={ () => mumsnetHidden = !mumsnetHidden }>
+  <section class:hidden={hidden[1]}>
+    <h2 on:click={ scroller(1) }>
       The Parent's Perspective</h2>
     <p>
       The text extracted from the Mumsnet forums has been analysed to assess the
@@ -65,28 +73,26 @@
     </select>
   </section>
 
-  {#if $questions}
-    <section class:hidden={ teacherTappHidden }>
-      <h2 on:click={ () => teacherTappHidden = !teacherTappHidden }>
-        The Teacher's Perspective
-      </h2>
-      <p>
-        We commissioned a series of surveys with Teacher Tapp.
-        TKTKTK
-      </p>
-      <p>
-        The square charts show the percentage of respondents who selected that
-        option. Each square represents 1 percent.
-      </p>
-      <p>
-        The surveys returned by the teachers have been segmented during
-        analysis. Select a segment to drill down into the results.
-      </p>
-      <p>
-        You can comare this result against another segment with the select box
-        that appears. The baseline figure will appear as a solid border on the
-        chart.
-      </p>
-    </section>
-  {/if}
+  <section class:hidden={ hidden[2] }>
+    <h2 on:click={ scroller(2) }>
+      The Teacher's Perspective
+    </h2>
+    <p>
+      We commissioned a series of surveys with Teacher Tapp.
+      TKTKTK
+    </p>
+    <p>
+      The square charts show the percentage of respondents who selected that
+      option. Each square represents 1 percent.
+    </p>
+    <p>
+      The surveys returned by the teachers have been segmented during
+      analysis. Select a segment to drill down into the results.
+    </p>
+    <p>
+      You can comare this result against another segment with the select box
+      that appears. The baseline figure will appear as a solid border on the
+      chart.
+    </p>
+  </section>
 </aside>
