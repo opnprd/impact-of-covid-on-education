@@ -1,5 +1,13 @@
 <script>
-  import { afterUpdate } from "svelte";
+  import { afterUpdate } from 'svelte';
+  import { tweened } from 'svelte/motion';
+  import { cubicInOut } from 'svelte/easing';
+
+  const scrollPos = tweened(window.scrollX, {
+    duration: 400,
+    easing: cubicInOut,
+  });
+
   import { datasets as mDatasets, dataset as mDataset } from '../store/mumsnet';
 
   const topPadding = 100;
@@ -7,29 +15,29 @@
 
   const findHeaders = () => {
     const targets = document.querySelectorAll('main section h2');
-    return Array.from(targets).map(x => x.offsetTop);
-  }
+    return Array.from(targets).map((x) => x.offsetTop);
+  };
 
   const calculateState = () => {
     const offsets = findHeaders();
     const y = window.scrollY + 2 * topPadding;
 
-    hidden = offsets.map((c, i, a) => !((y > c) && !(y > a[i+1])));
+    hidden = offsets.map((c, i, a) => !(y > c && !(y > a[i + 1])));
   };
 
   const scrollHandler = () => calculateState();
 
   const scroller = (pos) => () => {
     const offsets = findHeaders();
-    window.scrollTo(0, offsets[pos] - topPadding);
-  }
+    scrollPos.set(offsets[pos] - topPadding);
+  };
+
+  $: window.scrollTo(0, $scrollPos);
 
   afterUpdate(() => {
     calculateState();
   });
 </script>
-
-<svelte:window on:scroll={scrollHandler}/>
 
 <style type="text/scss">
   section {
@@ -44,18 +52,15 @@
   }
 </style>
 
+<svelte:window on:scroll={scrollHandler} />
 <aside>
   <section class:hidden={hidden[0]}>
-    <h2 on:click={ scroller(0) }>
-      The Child's Perspective</h2>
-    <p>
-      TKTKTK
-    </p>
+    <h2 on:click={scroller(0)}>The Child's Perspective</h2>
+    <p>TKTKTK</p>
   </section>
 
   <section class:hidden={hidden[1]}>
-    <h2 on:click={ scroller(1) }>
-      The Parent's Perspective</h2>
+    <h2 on:click={scroller(1)}>The Parent's Perspective</h2>
     <p>
       The text extracted from the Mumsnet forums has been analysed to assess the
       relative frequencies of individual terms and pairs of words during all of
@@ -73,21 +78,16 @@
     </select>
   </section>
 
-  <section class:hidden={ hidden[2] }>
-    <h2 on:click={ scroller(2) }>
-      The Teacher's Perspective
-    </h2>
-    <p>
-      We commissioned a series of surveys with Teacher Tapp.
-      TKTKTK
-    </p>
+  <section class:hidden={hidden[2]}>
+    <h2 on:click={scroller(2)}>The Teacher's Perspective</h2>
+    <p>We commissioned a series of surveys with Teacher Tapp. TKTKTK</p>
     <p>
       The square charts show the percentage of respondents who selected that
       option. Each square represents 1 percent.
     </p>
     <p>
-      The surveys returned by the teachers have been segmented during
-      analysis. Select a segment to drill down into the results.
+      The surveys returned by the teachers have been segmented during analysis.
+      Select a segment to drill down into the results.
     </p>
     <p>
       You can comare this result against another segment with the select box
