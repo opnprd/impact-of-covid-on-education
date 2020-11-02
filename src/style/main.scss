@@ -43,6 +43,10 @@ input, select {
   @extend %standard-font;
 }
 
+td {
+  vertical-align: middle;
+}
+
 body {
   @extend %standard-font;
   > header {
@@ -90,6 +94,17 @@ body {
     left: 50%;
     margin-left: $popover-size / -2;
     margin-top: $popover-size / -2;
+  }
+}
+
+.barnardos {
+  svg {
+    fill: $barnardos-brand-colour;
+    width: 100%;
+    height: 25px;
+  }
+  .wider {
+    width: 300px;
   }
 }
 
