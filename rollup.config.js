@@ -11,24 +11,28 @@ import styles from 'rollup-plugin-styles';
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
-	let server;
-	
-	function toExit() {
-		if (server) server.kill(0);
-	}
+  let server;
 
-	return {
-		writeBundle() {
-			if (server) return;
-			server = require('child_process').spawn('npm', ['run', 'start', '--', '--dev'], {
-				stdio: ['ignore', 'inherit', 'inherit'],
-				shell: true,
-			});
+  function toExit() {
+    if (server) server.kill(0);
+  }
 
-			process.on('SIGTERM', toExit);
-			process.on('exit', toExit);
-		},
-	};
+  return {
+    writeBundle() {
+      if (server) return;
+      server = require('child_process').spawn(
+        'npm',
+        ['run', 'start', '--', '--dev'],
+        {
+          stdio: ['ignore', 'inherit', 'inherit'],
+          shell: true,
+        }
+      );
+
+      process.on('SIGTERM', toExit);
+      process.on('exit', toExit);
+    },
+  };
 }
 
 export default {
@@ -56,7 +60,7 @@ export default {
       minimize: production,
     }),
     html({
-      title: 'Impact of COVID-19 on Education',
+      title: 'Data about Children in Lockdown',
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
