@@ -41,7 +41,10 @@
 
 <svelte:window on:scroll={scrollHandler} />
 
-<button class='toc-display' on:click={() => open =! open}>{ open ? 'Hide' : 'Show' } ToC</button>
+<button
+  class="toc-display"
+  on:click={() => (open = !open)}>{open ? 'Hide' : 'Show'}
+  Menu</button>
 <aside class:open>
   <section class:hidden={hidden[0]}>
     <h2 on:click={scroller(0)}>The Child's Perspective</h2>
@@ -56,21 +59,7 @@
   </section>
 
   <section class:hidden={hidden[1]}>
-    <h2 on:click={scroller(1)}>The Parent's Perspective</h2>
-    <p>
-      The text extracted from the Mumsnet forums has been analysed to assess the
-      relative frequencies of individual terms and pairs of words during all of
-      January, April and September 2020.
-    </p>
-    <p>
-      You can select either 'Tokens' for single words or 'Bigrams' for pairs of
-      words. Clicking the column title will sort the terms by the prevalence in
-      that month. The number of terms will be limited to the top 10.
-    </p>
-  </section>
-
-  <section class:hidden={hidden[2]}>
-    <h2 on:click={scroller(2)}>The Teacher's Perspective</h2>
+    <h2 on:click={scroller(1)}>The Teacher's Perspective</h2>
     <p>We commissioned a series of surveys with Teacher Tapp. TKTKTK</p>
     <p>
       The square charts show the percentage of respondents who selected that
@@ -84,6 +73,20 @@
       You can comare this result against another segment with the select box
       that appears. The baseline figure will appear as a solid border on the
       chart.
+    </p>
+  </section>
+
+  <section class:hidden={hidden[2]}>
+    <h2 on:click={scroller(2)}>The Parent's Perspective</h2>
+    <p>
+      The text extracted from the Mumsnet forums has been analysed to assess the
+      relative frequencies of individual terms and pairs of words during all of
+      January, April and September 2020.
+    </p>
+    <p>
+      You can select either 'Tokens' for single words or 'Bigrams' for pairs of
+      words. Clicking the column title will sort the terms by the prevalence in
+      that month. The number of terms will be limited to the top 10.
     </p>
   </section>
 </aside>
