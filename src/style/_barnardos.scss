@@ -1,0 +1,33 @@
+$barnardos-brand-colour: hsl(81, 100%, 32%);
+
+.barnardos {
+  svg {
+    fill: $barnardos-brand-colour;
+    width: 100%;
+    height: 25px;
+  }
+  .wider {
+    width: 300px;
+  }
+  .headline {
+    @extend %flex-layout;
+    font-size: 2em;
+  }
+  .timeline {
+    @extend %flex-layout;
+    > button {
+      width: 5em;
+    }
+    > input {
+      margin-left: 1em;
+      flex-grow: 2;
+    }
+  }
+  .two-col {
+    @extend %flex-layout;
+    align-items: flex-start;
+    > * {
+      width: 49%;
+    }
+  }
+}

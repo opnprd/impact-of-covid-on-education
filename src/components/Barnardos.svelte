@@ -1,55 +1,61 @@
 <script>
+  import { spring } from 'svelte/motion';
   import { getCsv } from '../lib/fetch';
   import Bar from './chart/Bar.svelte';
+  import GraphRow from './GraphRow.svelte';
+
   let data;
   let date = 0;
-  let row = {};
-  let playing = false;
+  let row = spring(undefined);
+  let dates = [];
   let maxReferrals = 0;
-
   let player;
 
-  let channels = [];
-  let reasons = [];
-  let priorityGroups = [];
-
   const loader = async () => {
-    data = await getCsv('data/barnardos/referrals.csv');
+    const csv = await getCsv('data/barnardos/referrals.csv');
+    data = csv.map((r) =>
+      Object.entries(r).reduce((a, [k, v]) => {
+        if (!['date'].includes(k)) a[k] = parseInt(v);
+        return a;
+      }, {})
+    );
+    dates = csv.map(({ date }) => new Date(date));
+    console.log(dates);
     date = data.length - 1;
   };
   const loadData = loader();
+  const channels = [
+    'Approved Delivery Partner',
+    'Professional',
+    'Guardian',
+    'Self',
+  ];
+  const reasons = [
+    'Child mental health',
+    'Isolation & loneliness',
+    'Barriers to reintegration to education',
+    'Parenting support',
+    'Parent mental health',
+    'Barriers to engagement with support services',
+    'Impact of caring responsibilities',
+    'Concerns about children outside the home',
+    'Other',
+    'Exposure to online harm',
+    'Child protection or safeguarding concerns referred to Statutory Agencies',
+  ];
 
+  const priorityGroups = [
+    'Child mental health',
+    'BAMER',
+    'Children with SEN',
+    'Children under 5',
+    'At risk of (outside) exploitation',
+    'Young carers',
+  ];
   $: if (data) {
     maxReferrals = Math.max(...data.map((x) => x['Total referrals']));
-    row = data[date];
-    const getData = (x) => ({ channel: x, value: row[x] });
-    channels = [
-      'Approved Delivery Partner',
-      'Professional',
-      'Guardian',
-      'Self',
-    ].map(getData);
-    reasons = [
-      'Child mental health',
-      'Isolation & loneliness',
-      'Barriers to reintegration to education',
-      'Parenting support',
-      'Parent mental health',
-      'Barriers to engagement with support services',
-      'Impact of caring responsibilities',
-      'Concerns about children outside the home',
-      'Other',
-      'Exposure to online harm',
-      'Child protection or safeguarding concerns referred to Statutory Agencies',
-    ].map(getData);
-    priorityGroups = [
-      'Child mental health',
-      'BAMER',
-      'Children with SEN',
-      'Children under 5',
-      'At risk of (outside) exploitation',
-      'Young carers',
-    ].map(getData);
+    $row = data[date];
+    const getData = (x) => ({ key: x, value: $row[x] });
   }
   const togglePlay = () => {
     if (player) {
@@ -61,88 +67,55 @@
       date = (date + 1) % data.length;
     }, 500);
   };
+  const dateFormatter = new Intl.DateTimeFormat('default', {
+    weekday: 'short',
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
 </script>
 
-<style type="text/scss">
-  ul {
-    display: block;
-    width: 100%;
-  }
-  // ul {
-  //   display: grid;
-  //   grid-template-columns: repeat(2, 1fr);
-  // }
-  // li {
-  //   display: block;
-  // }
-</style>
-
 <section class="barnardos">
-  <h2>The Child's Perspective</h2>
+  <h2>Data from See, Hear, Respond</h2>
   {#await loadData}
     <p>Loading data...</p>
   {:then}
-    <ul>
-      <li>Week ending {row['date']}</li>
-      <li>
-        <button on:click={togglePlay}>{ player ? 'Stop' : 'Play' }</button>
-        <input
-          type="range"
-          bind:value={date}
-          min="0"
-          max={data.length - 1}
-          step="1" />
-      </li>
-      <li>{row['Total referrals']}</li>
-      <li>
-        Breakdown by channel
-        <table>
-          <tr>
-            <td>All Channels</td>
-            <td class="wider">
-              <Bar value={row['Total referrals']} max={maxReferrals} />
-            </td>
-            <td>{row['Total referrals']}</td>
-          </tr>
-          {#each channels as { channel, value }}
-            <tr>
-              <td>{channel}</td>
-              <td class="wider">
-                <Bar {value} max={maxReferrals} />
-              </td>
-              <td>{value}</td>
-            </tr>
-          {/each}
-        </table>
-      </li>
-      <li>
-        <p>Reasons</p>
-        <table>
-          {#each reasons as { channel, value }}
-            <tr>
-              <td>{channel}</td>
-              <td class="wider">
-                <Bar {value} />
-              </td>
-              <td>{value}%</td>
-            </tr>
-          {/each}
-        </table>
-      </li>
-      <li>
-        <p>Priority Group</p>
-        <table>
-          {#each priorityGroups as { channel, value }}
-            <tr>
-              <td>{channel}</td>
-              <td class="wider">
-                <Bar {value} />
-              </td>
-              <td>{value}%</td>
-            </tr>
-          {/each}
-        </table>
-      </li>
-    </ul>
+    <section class="headline">
+      <p>{dateFormatter.format(dates[date])}</p>
+      <p>{Math.round($row['Total referrals'], 0)} Referrals</p>
+    </section>
+    <section class="timeline">
+      <button
+        class="grey-button play"
+        on:click={togglePlay}>{player ? 'Stop' : 'Play'}</button>
+      <input
+        type="range"
+        bind:value={date}
+        min="0"
+        max={data.length - 1}
+        step="1" />
+    </section>
+    <section class="two-col">
+      <div>
+        <h3>Sources of referral</h3>
+        <GraphRow
+          label="All Channels"
+          value={$row['Total referrals']}
+          max={maxReferrals} />
+        {#each channels as key}
+          <GraphRow label={key} value={$row[key]} max={maxReferrals} />
+        {/each}
+        <h3>Priority Groups</h3>
+        {#each priorityGroups as key}
+          <GraphRow label={key} value={$row[key]} />
+        {/each}
+      </div>
+      <div>
+        <h3>Reasons for referral</h3>
+        {#each reasons as key}
+          <GraphRow label={key} value={$row[key]} />
+        {/each}
+      </div>
+    </section>
   {/await}
 </section>
