@@ -85,7 +85,7 @@
     <ul>
       <li>Week ending {row['date']}</li>
       <li>
-        <button on:click={togglePlay}>{playing}</button>
+        <button on:click={togglePlay}>{ player ? 'Stop' : 'Play' }</button>
         <input
           type="range"
           bind:value={date}
@@ -94,7 +94,6 @@
           step="1" />
       </li>
       <li>{row['Total referrals']}</li>
-      <li />
       <li>
         Breakdown by channel
         <table>

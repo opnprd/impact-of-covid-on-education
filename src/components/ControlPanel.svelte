@@ -1,16 +1,16 @@
 <script>
   import { afterUpdate } from 'svelte';
   import { tweened } from 'svelte/motion';
-  import { cubicInOut } from 'svelte/easing';
+  import { cubicOut } from 'svelte/easing';
+
+  let open = false;
 
   const scrollPos = tweened(window.scrollX, {
-    duration: 400,
-    easing: cubicInOut,
+    duration: 750,
+    easing: cubicOut,
   });
 
-  import { datasets as mDatasets, dataset as mDataset } from '../store/mumsnet';
-
-  const topPadding = 100;
+  const topPadding = 80;
   let hidden = [];
 
   const findHeaders = () => {
@@ -39,24 +39,20 @@
   });
 </script>
 
-<style type="text/scss">
-  section {
-    &:first-of-type {
-      margin-top: -1.2em;
-    }
-    &.hidden {
-      :not(:first-child) {
-        display: none;
-      }
-    }
-  }
-</style>
-
 <svelte:window on:scroll={scrollHandler} />
-<aside>
+
+<button class='toc-display' on:click={() => open =! open}>{ open ? 'Hide' : 'Show' } ToC</button>
+<aside class:open>
   <section class:hidden={hidden[0]}>
     <h2 on:click={scroller(0)}>The Child's Perspective</h2>
-    <p>TKTKTK</p>
+    <p>
+      This data results from analysis of referral data from the Barnardo's See,
+      Hear, Respond initiative.
+    </p>
+    <p>
+      You can scroll through the available data by dragging the slider. Pressing
+      the Play button will animate the display.
+    </p>
   </section>
 
   <section class:hidden={hidden[1]}>
@@ -71,11 +67,6 @@
       words. Clicking the column title will sort the terms by the prevalence in
       that month. The number of terms will be limited to the top 10.
     </p>
-    <select bind:value={$mDataset}>
-      {#each $mDatasets as opt, i}
-        <option value={i}>{opt.charAt(0).toUpperCase() + opt.slice(1)}</option>
-      {/each}
-    </select>
   </section>
 
   <section class:hidden={hidden[2]}>

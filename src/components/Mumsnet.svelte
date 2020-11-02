@@ -1,8 +1,10 @@
 <script>
   import Table from './Table.svelte';
   import { getCsv } from '../lib/fetch';
-  import { dataset, data, datasets } from '../store/mumsnet';
 
+  const datasets = ['bigrams', 'tokens'];
+  let dataset = 0;
+  let data = [];
   let column = 2;
   let rawData;
 
@@ -17,13 +19,13 @@
 
   async function getData() {
     rawData = await Promise.all(
-      $datasets.map((x) => getCsv(`data/mumsnet/${x}.csv`))
+      datasets.map((x) => getCsv(`data/mumsnet/${x}.csv`))
     );
-    $data = extractData(rawData, $dataset, column);
+    data = extractData(rawData, dataset, column);
   }
   let loadData = getData();
   $: if (rawData) {
-    $data = extractData(rawData, $dataset, column);
+    data = extractData(rawData, dataset, column);
   }
 
   const sortColNumeric = (c) => (a, b) => {
@@ -46,7 +48,13 @@
   {#await loadData}
     Loading data...
   {:then}
-    <Table data={$data} handler={handleClick} highlight={column} />
+    <select bind:value={dataset}>
+      {#each datasets as opt, i}
+        <option value={i}>{opt.charAt(0).toUpperCase() + opt.slice(1)}</option>
+      {/each}
+    </select>
+
+    <Table {data} handler={handleClick} highlight={column} />
     <aside>Data sourced from Mumsnet MI systems with kind permission.</aside>
   {:catch e}
     <p style="color: red">Data not loaded!</p>
