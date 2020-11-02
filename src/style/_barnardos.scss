@@ -23,11 +23,15 @@ $barnardos-brand-colour: hsl(81, 100%, 32%);
       flex-grow: 2;
     }
   }
-  .two-col {
-    @extend %flex-layout;
-    align-items: flex-start;
-    > * {
-      width: 49%;
+  @include desktop {
+    .two-col {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      align-items: flex-start;
+      > * {
+        width: 49%;
+      }
     }
   }
 }
