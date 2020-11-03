@@ -19,11 +19,9 @@
   }
 </style>
 
-<div class="container">
-  <svg viewbox="0 0 200 200" on:mouseenter={showPopover} on:mouseleave={hidePopover} on:touchstart={togglePopover}>
-    <circle cx=100 cy=100 r={ radius * 100 }/>
-    {#if content && shown}
-      <text class:shown transition:fade x=100 y=100 dy=10 text-anchor='middle' dominant-baseline='middle'>{ content }</text>
-    {/if}
-  </svg>
-</div>
+<svg viewbox="0 0 200 200" on:mouseenter={showPopover} on:mouseleave={hidePopover} on:touchstart={togglePopover}>
+  <circle cx=100 cy=100 r={ radius * 100 }/>
+  {#if content && shown}
+    <text class:shown transition:fade x=100 y=100 dy=10 text-anchor='middle' dominant-baseline='middle'>{ content }</text>
+  {/if}
+</svg>

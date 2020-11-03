@@ -3,6 +3,7 @@
   export let label;
   export let value;
   export let max;
+  export let unit = '';
 </script>
 
 <style>
@@ -36,6 +37,6 @@
     <Bar {value} {max} />
   </li>
   <li class='value'>
-    { Math.round(value, 0) }
+    { Math.round(value, 0) }{ unit }
   </li>
 </ul>

@@ -103,6 +103,7 @@ body {
     background: $background-colour;
     z-index: 50;
     display: none;
+    overflow-y: scroll;
     &.open {
       display: initial;
     }
@@ -142,31 +143,11 @@ body {
   }
 }
 
-
 [role='main'] {
   @extend %content-block;
   @include desktop {
     margin-left: 22rem;
     max-width: 50em;
-  }
-}
-
-.container {
-  position: relative;
-  svg {
-    width: 5rem;
-  }
-  .popover {
-    position: absolute;
-    background: white;
-    border: 1px solid grey;
-    border-radius: 0.5em;
-    top: 50%;
-    width: $popover-size;
-    height: $popover-size;
-    left: 50%;
-    margin-left: $popover-size / -2;
-    margin-top: $popover-size / -2;
   }
 }
 

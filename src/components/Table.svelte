@@ -39,27 +39,3 @@
     {/each}
   </tbody>
 </table>
-
-<style type="text/scss">
-  table {
-    border-collapse: collapse;
-    overflow: hidden;
-    display: block;
-    font-size: 2em;
-    td,
-    th {
-      padding: 0.2rem 0.5rem;
-      // width: auto;
-      text-align: center;
-    }
-    th {
-      font-weight: bold;
-    }
-    .term {
-      width: 7em;
-      font-style: italic;
-      text-transform: capitalize;
-      text-align: left;
-    }
-  }
-</style>

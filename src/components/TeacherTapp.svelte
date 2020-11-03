@@ -11,7 +11,7 @@
 </script>
 
 <section class="teachertapp">
-  <h2>The Teacher's Perspective</h2>
+  <h2 id='teachertapp'>The Teacher's Perspective</h2>
   {#await loader}
     <p>Loading data file</p>
   {:then}

@@ -10,14 +10,17 @@
 
   const findHeaders = () => {
     const targets = document.querySelectorAll('main section h2');
-    return Array.from(targets).map((x) => x.offsetTop);
+    return Array.from(targets).reduce((a, x) => {
+      a[x.id] = x.offsetTop;
+      return a;
+    }, {});
   };
 
   const calculateState = () => {
     const offsets = findHeaders();
     const y = window.scrollY + 2 * topPadding;
 
-    hidden = offsets.map((c, i, a) => !(y > c && !(y > a[i + 1])));
+    hidden = Object.values(offsets).map((c, i, a) => !(y > c && !(y > a[i + 1])));
   };
 
   const scrollHandler = () => calculateState();
@@ -25,6 +28,7 @@
   const scroller = (pos) => () => {
     const offsets = findHeaders();
     scrollPos.set(offsets[pos] - topPadding);
+    open = false;
   };
 
   $: window.scrollTo(0, $scrollPos);
@@ -42,7 +46,9 @@
   Menu</button>
 <aside class:open>
   <section class:hidden={hidden[0]}>
-    <h2 on:click={scroller(0)}>The Child's Perspective</h2>
+    <h2 on:click={scroller('barnardos')}>
+      <a href='#barnardos'>The Child's Perspective &rarr;</a>
+    </h2>
     <p>
       This data results from analysis of referral data from the Barnardo's See,
       Hear, Respond initiative.
@@ -54,7 +60,9 @@
   </section>
 
   <section class:hidden={hidden[1]}>
-    <h2 on:click={scroller(1)}>The Teacher's Perspective</h2>
+    <h2 on:click={scroller('teachertapp')}>
+      <a href='#teachertapp'>The Teacher's Perspective &rarr;</a>
+    </h2>
     <p>We commissioned a series of surveys with Teacher Tapp. TKTKTK</p>
     <p>
       The square charts show the percentage of respondents who selected that
@@ -72,7 +80,9 @@
   </section>
 
   <section class:hidden={hidden[2]}>
-    <h2 on:click={scroller(2)}>The Parent's Perspective</h2>
+    <h2 on:click={scroller('mumsnet')}>
+      <a href="#mumsnet">The Parent's Perspective &rarr;</a>
+    </h2>
     <p>
       The text extracted from the Mumsnet forums has been analysed to assess the
       relative frequencies of individual terms and pairs of words during all of

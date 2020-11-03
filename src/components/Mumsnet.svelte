@@ -41,7 +41,7 @@
 </script>
 
 <section class="mumsnet">
-  <h2>The Parent's Perspective</h2>
+  <h2 id='mumsnet'>The Parent's Perspective</h2>
   {#await loadData}
     Loading data...
   {:then}

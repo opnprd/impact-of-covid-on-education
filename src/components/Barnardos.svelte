@@ -1,7 +1,6 @@
 <script>
   import { spring } from 'svelte/motion';
   import { getCsv } from '../lib/fetch';
-  import Bar from './chart/Bar.svelte';
   import GraphRow from './GraphRow.svelte';
 
   let data;
@@ -54,7 +53,6 @@
   $: if (data) {
     maxReferrals = Math.max(...data.map((x) => x['Total referrals']));
     $row = data[date];
-    const getData = (x) => ({ key: x, value: $row[x] });
   }
   const togglePlay = () => {
     if (player) {
@@ -64,10 +62,10 @@
     }
     player = window.setInterval(() => {
       date = (date + 1) % data.length;
+      if (date == data.length - 1) togglePlay();
     }, 500);
   };
   const dateFormatter = new Intl.DateTimeFormat('default', {
-    weekday: 'short',
     year: 'numeric',
     month: 'short',
     day: 'numeric',
@@ -75,7 +73,7 @@
 </script>
 
 <section class="barnardos">
-  <h2>Data from See, Hear, Respond</h2>
+  <h2 id="barnardos">Data from See, Hear, Respond</h2>
   {#await loadData}
     <p>Loading data...</p>
   {:then}
@@ -106,13 +104,13 @@
         {/each}
         <h3>Priority Groups</h3>
         {#each priorityGroups as key}
-          <GraphRow label={key} value={$row[key]} />
+          <GraphRow label={key} value={$row[key]} unit="%" />
         {/each}
       </div>
       <div>
         <h3>Reasons for referral</h3>
         {#each reasons as key}
-          <GraphRow label={key} value={$row[key]} />
+          <GraphRow label={key} value={$row[key]} unit="%" />
         {/each}
       </div>
     </section>

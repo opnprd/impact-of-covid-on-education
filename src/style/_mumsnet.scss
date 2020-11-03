@@ -8,4 +8,26 @@
   .selected {
     background-color: change-color($mumsnet-brand-colour, $lightness: 75%);
   }
+  table {
+    border-collapse: collapse;
+    overflow: hidden;
+    display: block;
+    @include desktop {
+      font-size: 2em;
+    }
+    td,
+    th {
+      padding: 0.2rem 0.5rem;
+      text-align: center;
+    }
+    th {
+      font-weight: bold;
+    }
+    .term {
+      width: 7rem;
+      font-style: italic;
+      text-transform: capitalize;
+      text-align: left;
+    }
+  }
 }
