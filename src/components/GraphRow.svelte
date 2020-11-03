@@ -6,7 +6,7 @@
   export let unit = '';
 </script>
 
-<style>
+<style type='text/scss'>
   ul {
     display: flex;
     align-items: center;

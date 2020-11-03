@@ -15,7 +15,7 @@
   {/each}
 </svg>
 
-<style type="text/scss">
+<style type='text/scss'>
   $grey: #eee;
   rect {
     fill: $grey;

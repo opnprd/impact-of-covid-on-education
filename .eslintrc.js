@@ -1,28 +1,24 @@
 module.exports = {
-  env: { 
-    jest: true,
+  root: true,
+  extends: 'eslint:recommended',
+  parserOptions: {
+    ecmaVersion: 2019,
+    sourceType: 'module',
+  },
+  env: {
     browser: true,
     es6: true,
   },
-  parserOptions: {
-    ecmaVersion: 8,
-    sourceType: 'module',
-  },
-  extends: [
-    'eslint:recommended',
+  plugins: [
+    'svelte3'
+  ],
+  overrides: [
+    {
+      files: ['*.svelte'],
+      processor: 'svelte3/svelte3',
+    }
   ],
   rules: {
     quotes: ['error', 'single'],
-    semi: ['warn', 'always'],
-    'comma-dangle': ['warn', 'always-multiline'],
-    'quote-props': ['warn', 'as-needed'],
   },
-  overrides: [
-    {
-      files: ['rollup.config.js', '.eslintrc.js'],
-      env: {
-        node: true,
-      },
-    },
-  ],
 };
