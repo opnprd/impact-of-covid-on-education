@@ -185,10 +185,14 @@ body {
 
 .teachertapp {
   .selector {
-    display: flex;
+    @extend %flex-layout;
     margin: 0.5em 0;
+    height: 2em;
     svg {
       padding: 0 0.5em;
+    }
+    select {
+      flex-grow: 2;
     }
   }
   label {
@@ -196,15 +200,17 @@ body {
     width: 10em;
   }
   .grid {
-    display: flex;
+    @extend %flex-layout;
+    align-items: start;
+    justify-content: start;
     flex-wrap: wrap;
   }
   .response {
-    width: 10em;
+    width: 100px;
     padding-bottom: 1em;
-    padding-right: 1em;
+    margin-right: 0.5em;
     p {
-      font-size: 0.7em;
+      font-size: 0.8em;
       margin: 0;
     }
   }

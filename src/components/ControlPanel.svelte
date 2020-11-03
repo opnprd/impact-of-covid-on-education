@@ -1,14 +1,9 @@
 <script>
   import { afterUpdate } from 'svelte';
-  import { tweened } from 'svelte/motion';
-  import { cubicOut } from 'svelte/easing';
-
+  import { spring } from 'svelte/motion';
   let open = false;
 
-  const scrollPos = tweened(window.scrollX, {
-    duration: 750,
-    easing: cubicOut,
-  });
+  const scrollPos = spring(window.scrollX);
 
   const topPadding = 80;
   let hidden = [];
