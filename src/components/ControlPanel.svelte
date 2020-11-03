@@ -78,10 +78,32 @@
       relative frequencies of individual terms and pairs of words during all of
       January, April and September 2020.
     </p>
-    <p>
-      You can select either 'Tokens' for single words or 'Bigrams' for pairs of
-      words. Clicking the column title will sort the terms by the prevalence in
-      that month. The number of terms will be limited to the top 10.
-    </p>
+    <ul>
+      <li>
+        Select either bigrams (pairs of words) or tokens (single words) to see
+        how many times they were mentioned in the months of January, April or
+        September.
+      </li>
+
+      <li>
+        You can select either 'Tokens' for single words or 'Bigrams' for pairs
+        of words. Clicking the column title will sort the terms by the
+        prevalence in that month. The number of terms will be limited to the top
+        10.
+      </li>
+    </ul>
   </section>
 </aside>
+
+<style>
+  p, ul {
+    margin-bottom: 0.5em;
+  }
+  ul {
+    list-style: square outside none;
+    margin-left: 2em;
+  }
+  li {
+    margin-bottom: 0.2em;
+  }
+</style>

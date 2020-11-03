@@ -1,0 +1,11 @@
+.mumsnet {
+  max-width: 100%;
+  svg {
+    circle {
+      fill: $mumsnet-brand-colour;
+    }
+  }
+  .selected {
+    background-color: change-color($mumsnet-brand-colour, $lightness: 75%);
+  }
+}

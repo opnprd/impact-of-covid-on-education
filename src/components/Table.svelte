@@ -9,28 +9,32 @@
     if (current > accumulator) return current;
     return accumulator;
   }, 0);
+  const monthDateFormatter = new Intl.DateTimeFormat('default', {  month: 'short', year: 'numeric' });
+  $: dates = data.columns.slice(1).map(x => monthDateFormatter.format(new Date(x)));
 </script>
 
 <table>
   <thead>
     <tr>
-      {#each data.columns as col, i}
-        <th class:selected={ i === highlight } on:click="{() => handler(i)}">{col}</th>
+      {#each dates as col, i}
+      <th class:selected={ i === highlight } on:click="{() => handler(i)}">{col}</th>
       {/each}
+      <th></th>
     </tr>
   </thead>
   <tbody>
     {#each data as row}
       <tr>
-        {#each data.columns as col, i}
+        {#each data.columns.slice(1) as col, i}
           <td class:selected={ i === highlight }>
-            {#if numeric(row[col])}
-              <Circle
-                radius={Math.sqrt(row[col] / max)}
-                content="<p>{row[col]}</p>" />
-            {:else}{row[col]}{/if}
+            <Circle
+              radius={Math.sqrt(row[col] / max)}
+              content={row[col]} />
           </td>
         {/each}
+        <td class="term">
+          {row['term']}
+        </td>
       </tr>
     {/each}
   </tbody>
@@ -39,13 +43,23 @@
 <style type="text/scss">
   table {
     border-collapse: collapse;
+    overflow: hidden;
+    display: block;
+    font-size: 2em;
     td,
     th {
-      padding: 0.2em 0.5em;
+      padding: 0.2rem 0.5rem;
+      // width: auto;
       text-align: center;
     }
-    th:first-child {
-      width: 15em;
+    th {
+      font-weight: bold;
+    }
+    .term {
+      width: 7em;
+      font-style: italic;
+      text-transform: capitalize;
+      text-align: left;
     }
   }
 </style>

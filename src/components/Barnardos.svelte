@@ -20,7 +20,6 @@
       }, {})
     );
     dates = csv.map(({ date }) => new Date(date));
-    console.log(dates);
     date = data.length - 1;
   };
   const loadData = loader();

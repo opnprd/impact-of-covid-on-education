@@ -154,7 +154,7 @@ body {
 .container {
   position: relative;
   svg {
-    width: 5em;
+    width: 5rem;
   }
   .popover {
     position: absolute;
@@ -170,18 +170,8 @@ body {
   }
 }
 
-@import 'barnardos';
-
-.mumsnet {
-  svg {
-    circle {
-      fill: $mumsnet-brand-colour;
-    }
-  }
-  .selected {
-    background-color: change-color($mumsnet-brand-colour, $lightness: 75%);
-  }
-}
+@import 'barnardos',
+        'mumsnet';
 
 .teachertapp {
   .selector {
