@@ -26,7 +26,7 @@
           {col}
         </th>
       {/each}
-      <th />
+      <td />
     </tr>
   </thead>
   <tbody>

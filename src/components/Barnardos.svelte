@@ -86,6 +86,7 @@
         class="grey-button play"
         on:click={togglePlay}>{player ? 'Stop' : 'Play'}</button>
       <input
+        title='Week selector slider'
         type="range"
         bind:value={date}
         min="0"

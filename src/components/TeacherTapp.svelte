@@ -11,12 +11,12 @@
 </script>
 
 <section class="teachertapp">
-  <h2 id='teachertapp'>The Teacher's Perspective</h2>
+  <h2 id='teachertapp'>Teacher Surveys</h2>
   {#await loader}
     <p>Loading data file</p>
   {:then}
-    {#each $questions.q as question}
-      <TeacherTappGriddle {question} keys={$questions.k}/>
+    {#each $questions.q as question, i}
+      <TeacherTappGriddle {question} keys={$questions.k} id={i}/>
     {/each}
   {/await}
 </section>

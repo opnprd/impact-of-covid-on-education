@@ -4,6 +4,7 @@
 
   export let question;
   export let keys;
+  export let id = '';
   let responses;
 
   let segment = 'All';
@@ -23,17 +24,17 @@
   <h3>{question.q}</h3>
 
   <div class='selector'>
-    <label for='primary-segment'>Segment</label>
+    <label for='primary-segment-{id}'>Segment</label>
     <svg width='10' viewBox='0 0 10 10'><rect class='filled' width='10' height='10'/></svg>
-    <select id='primary-segment' bind:value={segment}>
+    <select id='primary-segment-{id}' bind:value={segment}>
       {#each keys as k}<option>{ k }</option>{/each}
     </select>
   </div>
   {#if segment != 'All'}
     <div class='selector'>
-      <label for='comarison-segment'>Comparison</label>
+      <label for='comarison-segment-{id}'>Comparison</label>
       <svg width='10' viewBox='0 0 10 10'><rect class='baseline' width='10' height='10'/></svg>
-      <select id='comparison-segment' bind:value={baseline}>
+      <select id='comparison-segment-{id}' bind:value={baseline}>
         <option>None</option>
         {#each keys as k}<option>{ k }</option>{/each}
       </select>
