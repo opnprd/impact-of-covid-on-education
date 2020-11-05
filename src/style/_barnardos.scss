@@ -13,6 +13,12 @@ $barnardos-brand-colour: hsl(81, 100%, 32%);
     @extend %flex-layout;
     font-size: 2em;
   }
+  .reporting-type {
+    font-size: 0.4em;
+    display: inline-block;
+    max-width: 5em;
+    font-style: italic;
+  }
   .timeline {
     @extend %flex-layout;
     > button {

@@ -79,7 +79,7 @@
   {:then}
     <section class="headline">
       <p>{dateFormatter.format(dates[date])}</p>
-      <p>{Math.round($row['Total referrals'], 0)} Referrals</p>
+      <p>{Math.round($row['Total referrals'], 0)} <span class='reporting-type'>Referals / week</span></p>
     </section>
     <aside>
       <p>
