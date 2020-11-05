@@ -2,7 +2,7 @@
   import Bar from './chart/Bar.svelte';
   export let label;
   export let value;
-  export let max;
+  export let max = 100;
   export let unit = '';
 </script>
 

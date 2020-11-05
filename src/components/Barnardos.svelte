@@ -9,6 +9,7 @@
   let dates = [];
   let maxReferrals = 0;
   let player;
+  let cumulative = true;
 
   const loader = async () => {
     const csv = await getCsv('data/barnardos/referrals.csv');
@@ -51,8 +52,19 @@
     'Young carers',
   ];
   $: if (data) {
-    maxReferrals = Math.max(...data.map((x) => x['Total referrals']));
-    $row = data[date];
+    let totalFunc = (s) => Math.max(...s);
+    if (cumulative) totalFunc = (s) => s.reduce((a, b) => a + b, 0);
+    maxReferrals = totalFunc(data.map((x) => x['Total referrals']));
+    if (cumulative) {
+      $row = data.slice(0, date+1).reduce((a, c) => {
+        const lastTotal = a['Total referrals'];
+        ['Total referrals', ...channels].forEach(x => a[x] = (a[x] || 0) + c[x]);
+        [...priorityGroups, ...reasons].forEach(x => a[x] = ((a[x] * lastTotal || 0) + (c[x] * c['Total referrals'])) / a['Total referrals']);
+        return a;
+      }, {});
+    } else {
+      $row = data[date];
+    }
   }
   const togglePlay = () => {
     if (player) {
@@ -79,14 +91,11 @@
   {:then}
     <section class="headline">
       <p>{dateFormatter.format(dates[date])}</p>
-      <p>{Math.round($row['Total referrals'], 0)} <span class='reporting-type'>Referals / week</span></p>
-    </section>
-    <aside>
       <p>
-        NB The numbers presented refer to individual referrals not including children
-        reached in detached settings. The latter accounted for a further 12451 children.
+        {Math.round($row['Total referrals'], 0)}
+        <span class='reporting-type'>{ cumulative ? 'Total referrals' : 'Referrals / week'}</span>
       </p>
-    </aside>
+    </section>
     <section class="timeline">
       <button
         class="grey-button play"
@@ -98,6 +107,10 @@
         min="0"
         max={data.length - 1}
         step="1" />
+      <div class='control-block'>
+        <label for='barnardos-cumulative'>Cumulative </label>
+        <input id='barnardos-cumulative' type='checkbox' bind:checked={ cumulative }/>
+      </div>
     </section>
     <section class="two-col">
       <div>

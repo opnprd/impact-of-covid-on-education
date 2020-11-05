@@ -21,12 +21,20 @@ $barnardos-brand-colour: hsl(81, 100%, 32%);
   }
   .timeline {
     @extend %flex-layout;
+    > :not(:first-child) {
+      margin-left: 1em;
+    }
     > button {
       width: 5em;
     }
     > input {
-      margin-left: 1em;
       flex-grow: 2;
+    }
+    > div {
+      font-style: italic;
+      font-size: 0.8em;
+      display: flex;
+      align-items: center;
     }
   }
   @include desktop {

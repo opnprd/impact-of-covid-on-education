@@ -50,8 +50,13 @@
       <a href='#barnardos'>The Child's Perspective &rarr;</a>
     </h2>
     <p>
-      This data results from analysis of referral data from the Barnardo's See,
+      This data results from analysis of referrals from the Barnardo's See,
       Hear, Respond initiative.
+    </p>
+    <p>
+      The numbers presented refer to individual referrals not including children
+      reached in detached settings. The latter accounted for a further 12,451 children
+      reached from the launch of the service until mid-October.
     </p>
     <p>
       You can scroll through the available data by dragging the slider. Pressing
