@@ -81,6 +81,12 @@
       <p>{dateFormatter.format(dates[date])}</p>
       <p>{Math.round($row['Total referrals'], 0)} Referrals</p>
     </section>
+    <aside>
+      <p>
+        NB The numbers presented refer to individual referrals not including children
+        reached in detached settings. The latter accounted for a further 12451 children.
+      </p>
+    </aside>
     <section class="timeline">
       <button
         class="grey-button play"
