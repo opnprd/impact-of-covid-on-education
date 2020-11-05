@@ -60,10 +60,9 @@ export default {
       minimize: production,
     }),
     html({
-      title: 'Data about Children in Lockdown',
       meta: [
         { charset: 'utf-8' },
-        { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+        { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
       ],
     }),
     copy({
