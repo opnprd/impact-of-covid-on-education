@@ -1,3 +1,7 @@
+<script>
+  export let title;
+</script>
+
 <header>
-  <h1>Data about Children in Lockdown</h1>
+  <h1>{ title }</h1>
 </header>
